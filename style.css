@@ -1,0 +1,607 @@
+/* ==========================================================================
+   ΚΡΟΝΟΣ (KRONOS) - Estilos Clásicos Griegos (Estilo Místico / Ctónico)
+   Facultad de Filosofía y Letras - UNAM
+   ========================================================================== */
+
+:root {
+  /* Paleta Mitológica Ctónica */
+  --bg-deep: #09090a;
+  --bg-surface: #121214;
+  --bg-card: rgba(22, 21, 23, 0.88);
+  --bg-card-hover: rgba(28, 27, 30, 0.95);
+  
+  /* Acentos Dorados y Bronce */
+  --gold-light: #f3df9b;
+  --gold-primary: #d4af37;
+  --gold-dark: #917228;
+  --gold-dim: rgba(212, 175, 55, 0.25);
+  --bronze: #8a6435;
+  
+  /* Terracota y Mármol */
+  --terracotta: #a8472a;
+  --terracotta-glow: rgba(168, 71, 42, 0.35);
+  --marble-ivory: #f7f4ea;
+  --marble-muted: #c8c2b5;
+  --marble-dark: #827c70;
+  
+  /* Bordes y Sombras */
+  --border-gold: 1px solid rgba(212, 175, 55, 0.4);
+  --border-gold-strong: 2px solid #d4af37;
+  --shadow-mythic: 0 12px 40px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.1);
+  --shadow-inset: inset 0 0 25px rgba(0, 0, 0, 0.85);
+  
+  /* Tipografías */
+  --font-display: 'Cinzel Decorative', 'Cinzel', 'Times New Roman', serif;
+  --font-heading: 'Cinzel', 'Times New Roman', serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+}
+
+/* Reseteo básico y fondo general */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 20% 50%, rgba(168, 71, 42, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(145, 114, 40, 0.08) 0%, transparent 45%),
+    linear-gradient(to bottom, #070708 0%, #0e0d0f 50%, #070708 100%);
+  background-attachment: fixed;
+  color: var(--marble-ivory);
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.75;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Efecto sutil de grano o mármol */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: 999;
+}
+
+/* Contenedor Principal */
+.kronos-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   CENEFAS Y GRECAS GRIEGAS (Meandros)
+   -------------------------------------------------------------------------- */
+.greek-frieze {
+  width: 100%;
+  height: 26px;
+  background-image: url('assets/greca.svg');
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: auto 24px;
+  opacity: 0.85;
+  margin: 1.5rem 0;
+  filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+}
+
+.greek-frieze.subtle {
+  opacity: 0.5;
+  margin: 1rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   ENCABEZADO INSTITUCIONAL (UNAM - FFyL)
+   -------------------------------------------------------------------------- */
+.acropolis-header {
+  background: linear-gradient(180deg, rgba(24, 22, 26, 0.95) 0%, rgba(14, 13, 15, 0.98) 100%);
+  border: var(--border-gold);
+  border-radius: 4px;
+  box-shadow: var(--shadow-mythic);
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.acropolis-header::before,
+.acropolis-header::after {
+  content: "✦";
+  position: absolute;
+  color: var(--gold-primary);
+  font-size: 1rem;
+}
+.acropolis-header::before { top: 8px; left: 12px; }
+.acropolis-header::after { bottom: 8px; right: 12px; }
+
+.institutional-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 100px;
+}
+
+.institutional-logo {
+  max-height: 88px;
+  max-width: 88px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8)) brightness(1.05);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.institutional-logo:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+}
+
+.institutional-label {
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--gold-light);
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.institutional-info {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.uni-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--marble-ivory);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.fac-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold-primary);
+  margin-top: 0.25rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.course-badge {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.35rem 1.2rem;
+  background: rgba(168, 71, 42, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 2px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.course-badge span {
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   HERO / TÍTULO MONUMENTAL (ΚΡΟΝΟΣ)
+   -------------------------------------------------------------------------- */
+.myth-hero {
+  text-align: center;
+  margin: 2.5rem 0 2rem 0;
+  position: relative;
+}
+
+.greek-pediment {
+  width: 140px;
+  height: 14px;
+  margin: 0 auto 0.75rem auto;
+  border-top: 2px solid var(--gold-primary);
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  position: relative;
+}
+.greek-pediment::after {
+  content: "♦";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold-primary);
+  font-size: 0.9rem;
+}
+
+.monumental-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 7vw, 5.2rem);
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  background: linear-gradient(180deg, #fff3c9 0%, #d4af37 40%, #87621f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(212, 175, 55, 0.35));
+  margin-bottom: 0.2rem;
+  line-height: 1.1;
+}
+
+.latin-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--marble-muted);
+}
+
+.creator-attribution {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--marble-ivory);
+}
+
+.creator-attribution strong {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--gold-light);
+  border-bottom: 1px dotted var(--gold-primary);
+  padding-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   SECCIONES Y TARJETAS ESTILO MÁRMOL / TEMPLO
+   -------------------------------------------------------------------------- */
+.myth-card {
+  background: var(--bg-card);
+  border: var(--border-gold);
+  border-radius: 4px;
+  box-shadow: var(--shadow-mythic);
+  padding: 2.25rem 2.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.3s ease;
+}
+
+.myth-card:hover {
+  border-color: rgba(212, 175, 55, 0.7);
+}
+
+/* Esquinas decorativas clásicas */
+.corner-tl, .corner-tr, .corner-bl, .corner-br {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: var(--gold-primary);
+  pointer-events: none;
+}
+.corner-tl { top: 4px; left: 4px; border-top: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.corner-tr { top: 4px; right: 4px; border-top: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+.corner-bl { bottom: 4px; left: 4px; border-bottom: 2px solid var(--gold-primary); border-left: 2px solid var(--gold-primary); }
+.corner-br { bottom: 4px; right: 4px; border-bottom: 2px solid var(--gold-primary); border-right: 2px solid var(--gold-primary); }
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 0.75rem;
+}
+
+.card-title .icon {
+  font-size: 1.4rem;
+  color: var(--terracotta);
+}
+
+/* --------------------------------------------------------------------------
+   TEMPLO DEL JUEGO (PICO-8 CONTAINER)
+   -------------------------------------------------------------------------- */
+.temple-arcade {
+  background: radial-gradient(circle at 50% 30%, #1c181c 0%, #0d0c0e 100%);
+  border: 2px solid var(--gold-primary);
+  border-radius: 6px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.2);
+  padding: 1.5rem;
+  margin: 2.5rem 0;
+  position: relative;
+  text-align: center;
+}
+
+.temple-pediment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.temple-pediment h3 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.pediment-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+.arcade-screen-frame {
+  max-width: 640px;
+  margin: 0 auto;
+  background: #000;
+  padding: 12px;
+  border: 2px solid var(--bronze);
+  border-radius: 8px;
+  box-shadow: var(--shadow-inset), 0 8px 30px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.pico8-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* Proporción cuadrada perfecta 1:1 para PICO-8 */
+  overflow: hidden;
+  border-radius: 4px;
+  background: #000;
+}
+
+.pico8-iframe-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.arcade-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 640px;
+  margin: 1rem auto 0 auto;
+  padding: 0.5rem 0.75rem;
+  background: rgba(15, 14, 16, 0.7);
+  border: 1px solid var(--gold-dim);
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: var(--marble-muted);
+}
+
+.btn-mythic {
+  background: linear-gradient(180deg, #3a2b16 0%, #1f170b 100%);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-mythic:hover {
+  background: linear-gradient(180deg, #574121 0%, #2f220f 100%);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   INSTRUCCIONES Y TECLADO
+   -------------------------------------------------------------------------- */
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.control-item {
+  background: rgba(14, 13, 15, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 4px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.control-item strong {
+  font-family: var(--font-heading);
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+}
+
+kbd {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: #fff;
+  background: #252427;
+  border: 1px solid var(--gold-primary);
+  border-radius: 3px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.6);
+  margin: 0 2px;
+}
+
+/* --------------------------------------------------------------------------
+   CRÉDITOS, JUEGO ORIGINAL Y LICENCIAS
+   -------------------------------------------------------------------------- */
+.attribution-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.attribution-box {
+  background: rgba(10, 10, 12, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 4px;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.attribution-box h4 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--gold-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.attribution-box p {
+  font-size: 1.02rem;
+  color: var(--marble-muted);
+  margin-bottom: 0.6rem;
+}
+
+.attribution-box a {
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--gold-primary);
+  transition: color 0.2s, border-bottom 0.2s;
+}
+
+.attribution-box a:hover {
+  color: #fff;
+  border-bottom-style: solid;
+}
+
+.license-banner {
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, rgba(168, 71, 42, 0.15) 0%, rgba(20, 18, 16, 0.8) 100%);
+  border: 1px solid var(--terracotta);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.license-icon-badge {
+  font-size: 2.2rem;
+  color: var(--gold-primary);
+  flex-shrink: 0;
+}
+
+.license-details {
+  flex: 1 1 260px;
+}
+
+.license-details h5 {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  color: var(--marble-ivory);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.license-details p {
+  font-size: 0.95rem;
+  color: var(--marble-muted);
+}
+
+/* --------------------------------------------------------------------------
+   PIE DE PÁGINA (EPÍLOGO)
+   -------------------------------------------------------------------------- */
+.epilogue-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gold-dim);
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--marble-dark);
+}
+
+.epilogue-footer p {
+  margin: 0.25rem 0;
+}
+
+/* Formato para bloques de texto */
+.text-body p {
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+.text-body p:last-child {
+  margin-bottom: 0;
+}
+
+.academic-quote {
+  border-left: 3px solid var(--gold-primary);
+  background: rgba(212, 175, 55, 0.05);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .kronos-wrapper {
+    padding: 1rem 0.75rem 2rem 0.75rem;
+  }
+  .myth-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .institutional-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+  .arcade-toolbar {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+}

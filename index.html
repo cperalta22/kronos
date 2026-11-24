@@ -2,10 +2,308 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Mi Juego PICO-8</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ΚΡΟΝΟΣ (Kronos) | Facultad de Filosofía y Letras - UNAM</title>
+  
+  <!-- Tipografías Clásicas Grecolatinas (Google Fonts con swap resiliente) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Archivo de datos editable por Cristóbal directamente desde GitHub -->
+  <script src="contenido/datos.js"></script>
 </head>
 <body>
-  <h1>Mi Juego</h1>
-  <iframe src="kronos/kronos.html" width="600" height="600" style="border:none;"></iframe>
+
+  <div class="kronos-wrapper">
+    
+    <!-- ENCABEZADO INSTITUCIONAL (UNAM Y FFyL) -->
+    <header class="acropolis-header">
+      <div class="institutional-grid">
+        
+        <!-- Escudo UNAM -->
+        <div class="logo-container">
+          <img src="assets/unam-logo.svg" alt="Escudo de la Universidad Nacional Autónoma de México" class="institutional-logo">
+          <span class="institutional-label">UNAM</span>
+        </div>
+
+        <!-- Información Académica -->
+        <div class="institutional-info">
+          <h1 class="uni-name" id="label-universidad">Universidad Nacional Autónoma de México</h1>
+          <h2 class="fac-name" id="label-facultad">Facultad de Filosofía y Letras</h2>
+          
+          <div class="course-badge">
+            <span id="label-materia">Materia: [Cargando materia...]</span> 
+            <span id="separator-carrera" style="display:none;"> | </span>
+            <span id="label-carrera"></span>
+          </div>
+        </div>
+
+        <!-- Logotipo FFyL (Atenea) -->
+        <div class="logo-container">
+          <img src="assets/ffyl-logo.png" alt="Logotipo Facultad de Filosofía y Letras - Atenea" class="institutional-logo">
+          <span class="institutional-label">FFyL</span>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Cenefa de Greca Clásica -->
+    <div class="greek-frieze"></div>
+
+    <!-- TÍTULO HERO DEL PROYECTO -->
+    <section class="myth-hero">
+      <div class="greek-pediment"></div>
+      <h1 class="monumental-title" id="label-titulo">ΚΡΟΝΟΣ</h1>
+      <p class="latin-subtitle" id="label-subtitulo">El Mito de Cronos y la Devoración del Tiempo</p>
+      
+      <p class="creator-attribution">
+        Proyecto y adaptación lúdica por: <strong id="label-creador">Cristóbal Romero Díaz</strong>
+      </p>
+    </section>
+
+    <!-- INTRODUCCIÓN AL JUEGO Y EL MITO -->
+    <section class="myth-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+
+      <h2 class="card-title">
+        <span class="icon">🏛️</span> 
+        <span>Introducción al Mito y al Juego</span>
+      </h2>
+
+      <div class="text-body" id="intro-container">
+        <!-- Contenido inyectado dinámicamente desde contenido/datos.js -->
+        <p>
+          En la <em>Teogonía</em> de Hesíodo, <strong>Cronos (Κρόνος)</strong>, el más joven y temible de los titanes engendrados por Urano (el Cielo) y Gea (la Tierra), arrebató el gobierno del cosmos a su padre castrándolo con una hoz de pedernal. No obstante, advertido por sus progenitores de que estaba destinado a ser derrocado por uno de sus propios vástagos, Cronos tomó una medida atroz: conforme su esposa Rea daba a luz a sus hijos (Hestia, Deméter, Hera, Hades y Poseidón), él los devoraba vivos para mantener cautivo el curso del destino dentro de sus propias entrañas.
+        </p>
+        <p>
+          Esta adaptación lúdica para la consola de fantasía <strong>PICO-8</strong> reinterpreta la clásica dinámica de persecución laberíntica bajo el prisma del mito hesiódico. El laberinto representa los corredores primordiales del tiempo cósmico, donde el titán ΚΡΟΝΟΣ (rotulado en caracteres del alfabeto griego clásico) recorre los pasillos devorando las simientes de las eras.
+        </p>
+        <p>
+          Sin embargo, las sombras del oráculo y la cólera de los espíritus divinos acechan sin descanso. Solo al consumir las Grandes Esferas Sagradas de la profecía, Cronos adquiere el vigor supremo para invertir la suerte y devorar a los espíritus que osan desafiar su trono de la Edad Dorada.
+        </p>
+      </div>
+
+      <div class="academic-quote" id="quote-container">
+        "El tiempo es un niño que juega a los dados; de un niño es el reino." — Heráclito, Fr. 52
+      </div>
+    </section>
+
+    <!-- TEMPLO DEL JUEGO (PICO-8 ARCADE) -->
+    <section class="temple-arcade" id="templo-juego">
+      <div class="temple-pediment">
+        <div class="pediment-line"></div>
+        <h3>⚡ El Laberinto de Κρόνος ⚡</h3>
+        <div class="pediment-line"></div>
+      </div>
+
+      <div class="arcade-screen-frame">
+        <div class="pico8-iframe-wrapper">
+          <iframe id="pico8-frame" src="kronos/kronos.html" title="Juego PICO-8 Kronos" allowfullscreen="true" allow="autoplay; gamepad"></iframe>
+        </div>
+      </div>
+
+      <div class="arcade-toolbar">
+        <span>🎮 Haz clic sobre el juego para enfocar controles</span>
+        <button type="button" class="btn-mythic" id="btn-fullscreen" onclick="toggleIframeFullscreen()">
+          <span>⛶</span> Pantalla Completa
+        </button>
+      </div>
+    </section>
+
+    <!-- INSTRUCCIONES Y CONTROLES -->
+    <section class="myth-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+
+      <h2 class="card-title">
+        <span class="icon">📜</span> 
+        <span>Instrucciones y Controles de Juego</span>
+      </h2>
+
+      <div class="controls-grid">
+        <div class="control-item">
+          <strong>Dirección y Desplazamiento</strong>
+          <p>Usa las <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> (Flechas del teclado) para guiar a Cronos por los corredores del laberinto mitológico.</p>
+        </div>
+
+        <div class="control-item">
+          <strong>Botones de Acción (PICO-8)</strong>
+          <p>
+            <kbd>Z</kbd> o <kbd>C</kbd> (Botón O): Iniciar partida / Pausa.<br>
+            <kbd>X</kbd> o <kbd>V</kbd> (Botón X): Confirmar selección.
+          </p>
+        </div>
+      </div>
+
+      <div class="greek-frieze subtle"></div>
+
+      <div class="text-body" id="instrucciones-container">
+        <!-- Inyectado desde contenido/datos.js -->
+        <p>• <strong>Objetivo primordial:</strong> Consume todas las simientes doradas del tiempo para purificar el laberinto y avanzar de era.</p>
+        <p>• <strong>Las Grandes Esferas Oraculares:</strong> En los cuatro vértices del templo reposan oráculos ancestrales. Al devorarlos, los espíritus vengadores pierden su fuerza y pueden ser consumidos por Cronos durante un breve periodo.</p>
+        <p>• <strong>Vidas del Titán:</strong> Dispones de tres oportunidades antes de que la profecía de Urano se consume y el imperio caiga ante el advenimiento del nuevo orden.</p>
+      </div>
+    </section>
+
+    <!-- CRÉDITOS, JUEGO ORIGINAL Y LICENCIA -->
+    <section class="myth-card">
+      <div class="corner-tl"></div><div class="corner-tr"></div>
+      <div class="corner-bl"></div><div class="corner-br"></div>
+
+      <h2 class="card-title">
+        <span class="icon">⚖️</span> 
+        <span>Obra Original, Atribución y Licencias</span>
+      </h2>
+
+      <div class="attribution-grid">
+        <div class="attribution-box">
+          <h4>Juego Base: Pico-Man</h4>
+          <p><strong>Autor Original:</strong> UrbanMonk (2015)</p>
+          <p><strong>Plataforma:</strong> PICO-8 BBS Cartridge</p>
+          <p>
+            <strong>Publicación Original:</strong> 
+            <a href="https://www.lexaloffle.com/bbs/?tid=2098" target="_blank" rel="noopener noreferrer">
+              Lexaloffle BBS - Cartridge #2098 ↗
+            </a>
+          </p>
+          <p><strong>Inspiración histórica:</strong> Homenaje al legendario <em>Pac-Man</em> (1980) creado por Toru Iwatani para Namco.</p>
+        </div>
+
+        <div class="attribution-box">
+          <h4>Modificación Mitológica: ΚΡΟΝΟΣ</h4>
+          <p><strong>Autor de la modificación:</strong> Cristóbal Romero Díaz</p>
+          <p><strong>Institución:</strong> Facultad de Filosofía y Letras (FFyL), UNAM</p>
+          <p><strong>Adaptación:</strong> Caracteres en griego clásico, reinterpretación del mito de Cronos devorando el tiempo y presentación visual clásica.</p>
+          <p><strong>Repositorio del proyecto:</strong> Código abierto y reproducible en GitHub.</p>
+        </div>
+      </div>
+
+      <!-- Banner de Licencia CC -->
+      <div class="license-banner">
+        <div class="license-icon-badge">🕮</div>
+        <div class="license-details">
+          <h5>Licencia: Creative Commons Atribución-NoComercial-CompartirIgual 4.0 Internacional (CC BY-NC-SA 4.0)</h5>
+          <p>
+            Tanto la obra original <em>Pico-Man</em> de UrbanMonk como la presente obra derivada <em>ΚΡΟΝΟΣ</em> de Cristóbal Romero Díaz se distribuyen bajo los términos de la licencia 
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light); text-decoration: underline;">
+              CC BY-NC-SA 4.0
+            </a>. Puedes compartir y adaptar este proyecto para fines académicos y no comerciales siempre que reconozcas a los autores y mantengas la misma licencia.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cenefa de Greca Clásica -->
+    <div class="greek-frieze"></div>
+
+    <!-- PIE DE PÁGINA (EPÍLOGO) -->
+    <footer class="epilogue-footer">
+      <p>Universidad Nacional Autónoma de México • Facultad de Filosofía y Letras</p>
+      <p>Proyecto Académico de Mitología Clásica y Humanidades Digitales</p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT DE CARGA DINÁMICA DE CONTENIDOS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Cargar variables desde window.CONFIG_JUEGO (definidas en contenido/datos.js)
+      if (typeof window.CONFIG_JUEGO === "object" && window.CONFIG_JUEGO !== null) {
+        var cfg = window.CONFIG_JUEGO;
+
+        if (cfg.universidad) {
+          var el = document.getElementById("label-universidad");
+          if (el) el.textContent = cfg.universidad;
+        }
+
+        if (cfg.facultad) {
+          var el = document.getElementById("label-facultad");
+          if (el) el.textContent = cfg.facultad;
+        }
+
+        if (cfg.materia) {
+          var el = document.getElementById("label-materia");
+          if (el) el.innerHTML = "Materia: <span>" + cfg.materia + "</span>";
+        }
+
+        if (cfg.carrera) {
+          var el = document.getElementById("label-carrera");
+          var sep = document.getElementById("separator-carrera");
+          if (el && cfg.carrera.trim().length > 0) {
+            el.innerHTML = "<span>" + cfg.carrera + "</span>";
+            if (sep) sep.style.display = "inline";
+          }
+        }
+
+        if (cfg.titulo) {
+          var el = document.getElementById("label-titulo");
+          if (el) el.textContent = cfg.titulo;
+        }
+
+        if (cfg.subtitulo) {
+          var el = document.getElementById("label-subtitulo");
+          if (el) el.textContent = cfg.subtitulo;
+        }
+
+        if (cfg.creador) {
+          var el = document.getElementById("label-creador");
+          if (el) el.textContent = cfg.creador;
+        }
+
+        if (cfg.introduccion && cfg.introduccion.trim().length > 0) {
+          var el = document.getElementById("intro-container");
+          if (el) {
+            // Formatear saltos de línea en párrafos si no contiene ya tags HTML
+            if (cfg.introduccion.indexOf("<p>") === -1) {
+              var paragraphs = cfg.introduccion.trim().split(/\n\s*\n/);
+              el.innerHTML = paragraphs.map(function(p) {
+                return "<p>" + p.trim().replace(/\n/g, "<br>") + "</p>";
+              }).join("");
+            } else {
+              el.innerHTML = cfg.introduccion;
+            }
+          }
+        }
+
+        if (cfg.instrucciones && cfg.instrucciones.trim().length > 0) {
+          var el = document.getElementById("instrucciones-container");
+          if (el) {
+            if (cfg.instrucciones.indexOf("<p>") === -1) {
+              var paragraphs = cfg.instrucciones.trim().split(/\n\s*\n/);
+              el.innerHTML = paragraphs.map(function(p) {
+                return "<p>" + p.trim().replace(/\n/g, "<br>") + "</p>";
+              }).join("");
+            } else {
+              el.innerHTML = cfg.instrucciones;
+            }
+          }
+        }
+
+        if (cfg.notaAcademica && cfg.notaAcademica.trim().length > 0) {
+          var el = document.getElementById("quote-container");
+          if (el) el.innerHTML = cfg.notaAcademica;
+        }
+      }
+    });
+
+    // Control de pantalla completa para el iframe de PICO-8
+    function toggleIframeFullscreen() {
+      var iframe = document.getElementById("pico8-frame");
+      if (!iframe) return;
+
+      if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+      } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen();
+      } else if (iframe.msRequestFullscreen) {
+        iframe.msRequestFullscreen();
+      }
+    }
+  </script>
+
 </body>
 </html>
