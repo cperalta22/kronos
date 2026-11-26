@@ -19,7 +19,7 @@ window.CONFIG_JUEGO = {
   creador: "Cristóbal Romero Díaz",
   
   // Materia / Asignatura (Escribe aquí el nombre de la materia de tu tarea)
-  materia: "Mitología Clásica y Tradición Grecolatina",
+  materia: "Mitología de Grecia y Roma 1",
   
   // Carrera / Licenciatura
   carrera: "Licenciatura en Letras Clásicas",
