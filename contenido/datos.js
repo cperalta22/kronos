@@ -29,7 +29,7 @@ window.CONFIG_JUEGO = {
   universidad: "Universidad Nacional Autónoma de México (UNAM)",
   
   // Ciclo o fecha de entrega
-  ciclo: "Semestre 2025-1",
+  ciclo: "Semestre 2027-1",
 
   // --- INTRODUCCIÓN AL JUEGO Y EL MITO ---
   // Puedes usar varias líneas de texto dentro de las comillas invertidas ` `
